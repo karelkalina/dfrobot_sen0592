@@ -49,6 +49,8 @@ sensor:
     accuracy_decimals: 0
 
 wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
   reboot_timeout: 15min
   output_power: 15dB
   power_save_mode: none
