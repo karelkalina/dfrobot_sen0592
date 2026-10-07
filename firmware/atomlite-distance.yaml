@@ -39,7 +39,7 @@ modbus_controller:
 # Read the specific Modbus Holding Register for Distance
 sensor:
   - platform: modbus_controller
-    name: distance_sensor
+    name: distance
     modbus_controller_id: sen0592
     id: distance_mm
     register_type: holding
@@ -48,9 +48,9 @@ sensor:
     unit_of_measurement: "mm"
     accuracy_decimals: 0
 
-
-
 wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
   reboot_timeout: 15min
   output_power: 15dB
   power_save_mode: none
@@ -61,7 +61,6 @@ wifi:
     subnet: 255.255.255.0
     dns1: 8.8.8.8
 
-  
 captive_portal:
 
 improv_serial:
@@ -81,3 +80,4 @@ ota:
 web_server:
   include_internal: false
   version: 3
+
