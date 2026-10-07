@@ -39,7 +39,7 @@ modbus_controller:
 # Read the specific Modbus Holding Register for Distance
 sensor:
   - platform: modbus_controller
-    name: distance_sensor
+    name: distance
     modbus_controller_id: sen0592
     id: distance_mm
     register_type: holding
