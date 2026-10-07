@@ -1,10 +1,10 @@
 # SEN0592 Distance Sensor
 
-This repository contains the configuration and ROS 2 driver for the SEN0592 distance sensor.
+This repository contains the ESPHome configuration and ROS 2 driver for the [SEN0592 distance sensor](https://www.dfrobot.com/product-2729.html), 5m range, RS485, IP67.
 
 ## Directory Structure
-- `firmware/`: Contains the ESPHome configuration (`atomlite-distance.yaml`) and related files for the [Atom Lite board](https://shop.m5stack.com/products/atom-lite-esp32-development-kit) with [RS485 interface](https://shop.m5stack.com/products/atomic-rs485-base) to the SEN0592 sensor.
 
+- `firmware/`: Contains the ESPHome configuration (`atomlite-distance.yaml`) and related files for the [Atom Lite board](https://shop.m5stack.com/products/atom-lite-esp32-development-kit) with [RS485 interface](https://shop.m5stack.com/products/atomic-rs485-base) to the SEN0592 sensor.
 - `ros_node/`: Contains the `sen0592_driver` ROS 2 package to interface with the sensor over HTTP.
 
 ## Sensor Wiring
@@ -37,7 +37,6 @@ wifi_ssid: "YourWiFiSSID"
 wifi_password: "YourWiFiPassword"
 ```
 
-
 ## ROS 2 Node
 
 The corresponding ROS 2 node for this sensor is `sen0592_node`. It polls the
@@ -56,11 +55,3 @@ Run the node using:
 source <ROS Workspace>/install/setup.bash
 ros2 run sen0592_driver sen0592_node --ros-args -p sensor_ip:=192.168.105.70
 ```
-
-# Setup instruction
-1. (Reccomended, not necesary) Connect the M5 Atom Lite to a pc and flash it with the factory firmware
-2. Go to 'web.esphome.io', and connect to your desired wifi network. Check the device ip and modify 'firmware/atomlite-distance.yaml' and  'ros_node\sen0311_driver\sen0311_node.py' to reflect this
-3. Compile and run the firmware using pixi 
-'pixi run compile'
-'pixi run upload --device {ip_address}'
-4. Verify that the device runs properly, either by checking the web server, endpoint or ros node (if something isn't working, i reccommend debuging in this order)
