@@ -1,4 +1,0 @@
-Command: ninja all
-fatal: not a git repository (or any of the parent directories): .git
-fatal: not a git repository (or any of the parent directories): .git
-fatal: not a git repository: /home/fakeqwertzy/.cache/esphome/idf/frameworks/5.5.5/components/openthread/openthread/../../../.git/modules/components/openthread/openthread

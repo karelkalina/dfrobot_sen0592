@@ -1,4 +1,0 @@
-Command: cmake -G Ninja -DPYTHON_DEPS_CHECKED=1 -DPYTHON=/home/fakeqwertzy/.cache/esphome/idf/penvs/5.5.5/bin/python -DESP_PLATFORM=1 -DSDKCONFIG=/mnt/c/KM/SEN0592/.esphome/build/atomlite-distance/sdkconfig.atomlite-distance -DCCACHE_ENABLE=0 /mnt/c/KM/SEN0592/.esphome/build/atomlite-distance
-fatal: not a git repository (or any of the parent directories): .git
-fatal: not a git repository (or any of the parent directories): .git
-fatal: not a git repository: /home/fakeqwertzy/.cache/esphome/idf/frameworks/5.5.5/components/openthread/openthread/../../../.git/modules/components/openthread/openthread
