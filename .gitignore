@@ -5,3 +5,4 @@ __pycache__/
 ros_node/build/
 ros_node/install/
 ros_node/log/
+firmware/secrets.yaml
