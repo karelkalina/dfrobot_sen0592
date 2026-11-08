@@ -64,15 +64,3 @@ ros2 run sen0592_driver sen0592_node --ros-args -p sensor_ip:=192.168.105.70
 'pixi run compile'
 'pixi run upload --device {ip_address}'
 4. Verify that the device runs properly, either by checking the web server, endpoint or ros node (if something isn't working, i reccommend debuging in this order)
-
-# Wiring
-- For wiring instructions see 'https://docs.m5stack.com/en/core/Atom-Lite' and 'https://wiki.dfrobot.com/sen0311/#tech_specs'
-    
-    sensor -> jumper cable -> cable m5
-
-    black -> brown -> black
-    red -> red -> red
-    blue -> yellow -> yellow
-    green ->white -> white
-
-    cable : 'https://docs.m5stack.com/en/accessory/cable/grove_cable'
