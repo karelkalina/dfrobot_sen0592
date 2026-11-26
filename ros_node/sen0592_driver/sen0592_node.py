@@ -16,7 +16,7 @@ class SEN0592Node(Node):
         poll_period = self.get_parameter('poll_period').get_parameter_value().double_value
 
         self.url = f'http://{self.sensor_ip}/sensor/distance'
-        self.publisher_ = self.create_publisher(Range, '/sen0592/distance', 10)
+        self.publisher_ = self.create_publisher(Range, '/sen0592/range', 10)
         self.timer = self.create_timer(poll_period, self.timer_callback)
 
         self.get_logger().info(f'SEN0592 node started: {self.url}')
