@@ -1,6 +1,8 @@
 # SEN0592 Distance Sensor
 
-This repository contains the ESPHome configuration and ROS 2 driver for the [SEN0592 distance sensor](https://www.dfrobot.com/product-2729.html), 5m range, RS485, IP67.
+This repository contains the ESPHome configuration and ROS 2 driver for the
+[SEN0592 distance sensor](https://www.dfrobot.com/product-2729.html), 5m range,
+RS485, IP67.
 
 ## Directory Structure
 
@@ -25,8 +27,9 @@ pixi run upload
 
 ## Network Configuration
 
-The sensor is configured to use a static IP address (`192.168.105.70`) on a
-private network, which credentials must be set in `firmware/secrets.yaml`.
+The sensor is configured to use a static IP address on a
+private network, which credentials must be set in `firmware/secrets.yaml` along
+with this IP address.
 To switch to a different network, update the `secrets.yaml` and provide Wi-Fi
 credentials or use the ESPHome captive portal that will be available when the
 device cannot connect to the configured network.
@@ -35,6 +38,11 @@ Format of `secrets.yaml`:
 ```yaml
 wifi_ssid: "YourWiFiSSID"
 wifi_password: "YourWiFiPassword"
+
+static_ip: xxx.xxx.xxx.xxx
+gateway: xxx.xxx.xxx.xxx
+subnet: 255.255.255.0
+dns1: xxx.xxx.xxx.xxx
 ```
 
 ## ROS 2 Node
@@ -45,7 +53,7 @@ ESPHome web server to retrieve distance measurements and publishes them as a
 
 - **Default IP:** `192.168.105.70`
 - **ESPHome Endpoint:** `/sensor/distance`
-- **Output Topic:** `/sen0592/distance` (Range in meters)
+- **Output Topic:** `/sen0592/range`
 - **Frame ID:** `sen0592_link`
 
 ### Usage
