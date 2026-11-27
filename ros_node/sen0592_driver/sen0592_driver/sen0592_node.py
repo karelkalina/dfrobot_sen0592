@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
+
+# ROS 2 node for the DFRobot SEN0592 ultrasonic distance sensor plugged into an M5 Atom
+# Lite running ESPHome. The node polls the sensor over HTTP and publishes the distance as
+# a Range message.
+
 import requests
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Range
+
+# Manufacturer specifications for the SEN0592 sensor.
+MIN_RANGE_M = 0.030
+MAX_RANGE_M = 5.0
+FOV_RAD = 1.396  # 80°
 
 class SEN0592Node(Node):
     def __init__(self):
@@ -15,8 +25,8 @@ class SEN0592Node(Node):
         self.frame_id = self.get_parameter('frame_id').get_parameter_value().string_value
         poll_period = self.get_parameter('poll_period').get_parameter_value().double_value
 
-        self.url = f'http://{self.sensor_ip}/sensor/distance_sensor'
-        self.publisher_ = self.create_publisher(Range, '/sen0592/distance', 10)
+        self.url = f'http://{self.sensor_ip}/sensor/distance'
+        self.publisher_ = self.create_publisher(Range, '/sen0592/range', 10)
         self.timer = self.create_timer(poll_period, self.timer_callback)
 
         self.get_logger().info(f'SEN0592 node started: {self.url}')
@@ -32,10 +42,10 @@ class SEN0592Node(Node):
             msg = Range()
             msg.header.stamp = self.get_clock().now().to_msg()
             msg.header.frame_id = self.frame_id
-            msg.radiation_type = Range.INFRARED
-            msg.field_of_view = 0.05
-            msg.min_range = 0.0
-            msg.max_range = 50.0
+            msg.radiation_type = Range.ULTRASOUND
+            msg.field_of_view = FOV_RAD
+            msg.min_range = MIN_RANGE_M
+            msg.max_range = MAX_RANGE_M
             msg.range = distance_m
 
             self.publisher_.publish(msg)
